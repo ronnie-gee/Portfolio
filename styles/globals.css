@@ -15,12 +15,37 @@ a {
   box-sizing: border-box;
 }
 
+:root {
+  --primary: white;
+  --text1: black;
+}
+
+[theme-selector="dark"] {
+  --primary: black;
+  --text1: white;
+}
+
+[theme-selector="light"] {
+  --primary: white;
+  --text1: black;
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+  }
+  body {
+    color: var(--text1);
+    background: var(--primary);
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: var(--text1);
+    background: var(--primary);
   }
 }
