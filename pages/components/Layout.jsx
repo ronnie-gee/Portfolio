@@ -79,33 +79,32 @@ const Layout = ({children}) => {
   /**
    * Get system theme if no theme found in local storage. Use toggleTheme to switch theme
    */
-
-
-   const getTheme = ()=>{
-    if(localStorage.getItem('ronnie-portfolio-theme')===undefined){
+  const localStorageKey = "ronniePortfolioTheme";
+  const getTheme = ()=>{
+    if(localStorage.getItem(localStorageKey)===undefined){
       if(window.matchMedia('(prefers-color-scheme:dark)').matches){
         document.documentElement.setAttribute('theme-selector', 'dark');
-        console.log(localStorage.getItem('ronnie-portfolio-theme'))
+        console.log(localStorage.getItem(localStorageKey))
         return 'dark';
       } else {
         document.documentElement.setAttribute('theme-selector', 'light');
-        localStorage.setItem('ronnie-portfolio-theme', 'light');
+        localStorage.setItem(localStorageKey, 'light');
         return 'light';
       }
     } else {
-      let themeFromLocalStorage = localStorage.getItem('ronnie-portfolio-theme');
+      let themeFromLocalStorage = localStorage.getItem(localStorageKey);
       document.documentElement.setAttribute('theme-selector', themeFromLocalStorage);
       return themeFromLocalStorage
     }
   }
 
   const toggleTheme = ()=>{
-    if(localStorage.getItem('ronnie-portfolio-theme')==='dark'){
+    if(localStorage.getItem(localStorageKey)==='dark'){
       document.documentElement.setAttribute('theme-selector', 'light');
-      localStorage.setItem('ronnie-portfolio-theme', 'light')
+      localStorage.setItem(localStorageKey, 'light')
     } else {
       document.documentElement.setAttribute('theme-selector', 'dark');
-      localStorage.setItem('ronnie-portfolio-theme', 'dark')
+      localStorage.setItem(localStorageKey, 'dark')
     }
   }
 
@@ -123,7 +122,7 @@ const Layout = ({children}) => {
     <ThemeProvider theme={theme==='dark'? darkTheme:lightTheme}>
       <NavBar/>
       <Box component='div' sx={{minHeight: 64, backgroundColor:'transparent'}}></Box>
-      
+
       {children}
 
       <Box
