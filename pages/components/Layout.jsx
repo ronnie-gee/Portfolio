@@ -8,9 +8,10 @@ const darkTheme = createTheme({
     mode: 'dark',
     background: {
       main: "#000",
-      light: "rgba(0,0,0,0.87)",
+      light: "#303030",
       contrastText: "#FFF",
-    }
+    },
+    
   },
 });
 
@@ -19,8 +20,8 @@ const lightTheme = createTheme({
     mode: 'light',
     background: {
       main: "#FFF",
-      light: "#FFF",
-      contrastText: "rgba(0,0,0,0.87)"
+      light: "#FAFAFA",
+      contrastText: "#303030"
     }
   },
 });
@@ -135,7 +136,7 @@ const Layout = ({children}) => {
         color: "primary.contrastText",
         backgroundColor: "secondary.main"
       }}>
-        <Typography>Switch to {theme==='dark'? 'Light':'Dark'} mode</Typography>
+        <Typography sx={{display:{ xs: 'none', sm: 'block'}}}>Switch to {theme==='dark'? 'Light':'Dark'} mode</Typography>
         <MaterialUISwitch 
           checked={theme==='dark'? true:false}
           onChange={()=>{

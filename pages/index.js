@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
+import { Box, Typography } from '@mui/material';
 
 export default function Home() {
 
@@ -12,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        Child
+        <Box sx ={{backgroundColor:'white', color:'black'}}>CHILD</Box>
       </main>
 
       <footer className={styles.footer}>

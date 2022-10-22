@@ -47,19 +47,19 @@ const NavBar = () => {
             I'm a Responsive NavBar
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <Button sx={{ color: 'background.contrastText' }}>
+            <Button sx={{ color: 'text.primary' }}>
               <Link href='/'>Home</Link>
             </Button>
-            <Button sx={{ color: 'background.contrastText' }}>
+            <Button sx={{ color: 'text.primary' }}>
               <Link href='/about'>About</Link>
             </Button>
-            <Button sx={{ color: 'background.contrastText' }}>
+            <Button sx={{ color: 'text.primary' }}>
               <Link href='/blogs'>blogs</Link>
             </Button>
-            <Button sx={{ color: 'background.contrastText' }}>
+            <Button sx={{ color: 'text.primary' }}>
               <Link href='/projects'>Projects</Link>
             </Button>
-            <Button sx={{ color: 'background.contrastText' }}>
+            <Button sx={{ color: 'text.primary' }}>
               <Link href='/contact'>Contact</Link>
             </Button>
           </Box>
