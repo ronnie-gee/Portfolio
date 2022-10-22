@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { styled, useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import { Switch, Box, Typography } from '@mui/material';
 import NavBar from './NavBar';
@@ -6,12 +6,22 @@ import NavBar from './NavBar';
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
+    background: {
+      main: "#000",
+      light: "rgba(0,0,0,0.87)",
+      contrastText: "#FFF",
+    }
   },
 });
 
 const lightTheme = createTheme({
   palette: {
     mode: 'light',
+    background: {
+      main: "#FFF",
+      light: "#FFF",
+      contrastText: "rgba(0,0,0,0.87)"
+    }
   },
 });
 
@@ -65,14 +75,57 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 const Layout = ({children}) => {
 
-  const [theme, setTheme] = useState('light');
+  
+  /**
+   * Get system theme if no theme found in local storage. Use toggleTheme to switch theme
+   */
+
+
+   const getTheme = ()=>{
+    if(localStorage.getItem('ronnie-portfolio-theme')===undefined){
+      if(window.matchMedia('(prefers-color-scheme:dark)').matches){
+        document.documentElement.setAttribute('theme-selector', 'dark');
+        console.log(localStorage.getItem('ronnie-portfolio-theme'))
+        return 'dark';
+      } else {
+        document.documentElement.setAttribute('theme-selector', 'light');
+        localStorage.setItem('ronnie-portfolio-theme', 'light');
+        return 'light';
+      }
+    } else {
+      let themeFromLocalStorage = localStorage.getItem('ronnie-portfolio-theme');
+      document.documentElement.setAttribute('theme-selector', themeFromLocalStorage);
+      return themeFromLocalStorage
+    }
+  }
+
+  const toggleTheme = ()=>{
+    if(localStorage.getItem('ronnie-portfolio-theme')==='dark'){
+      document.documentElement.setAttribute('theme-selector', 'light');
+      localStorage.setItem('ronnie-portfolio-theme', 'light')
+    } else {
+      document.documentElement.setAttribute('theme-selector', 'dark');
+      localStorage.setItem('ronnie-portfolio-theme', 'dark')
+    }
+  }
+
+  const [theme, setTheme] = useState();
+
+  useEffect(() => {
+    setTheme(getTheme());
+    return () => {
+      
+    }
+  }, ) //no second parameter means it will run every re render
+  
 
   return (
     <ThemeProvider theme={theme==='dark'? darkTheme:lightTheme}>
-      <NavBar>
-        
-      </NavBar>
+      <NavBar/>
+      <Box component='div' sx={{minHeight: 64, backgroundColor:'transparent'}}></Box>
+      
       {children}
+
       <Box
       sx ={{
         display: 'flex',
@@ -87,8 +140,8 @@ const Layout = ({children}) => {
         <MaterialUISwitch 
           checked={theme==='dark'? true:false}
           onChange={()=>{
-            console.log("onChange")
             setTheme(theme==='dark'? 'light':'dark')
+            toggleTheme();
           }}
         >Switch</MaterialUISwitch>    
       </Box>

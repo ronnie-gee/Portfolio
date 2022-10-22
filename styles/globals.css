@@ -21,7 +21,7 @@ a {
 }
 
 [theme-selector="dark"] {
-  --primary: black;
+  --primary: rgba(0,0,0,0.87);
   --text1: white;
 }
 
@@ -30,22 +30,12 @@ a {
   --text1: black;
 }
 
-@media (prefers-color-scheme: light) {
-  html {
-    color-scheme: light;
-  }
-  body {
-    color: var(--text1);
-    background: var(--primary);
-  }
+/* @media (prefers-color-scheme: light) { */
+html {
+  color-scheme: light;
 }
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: var(--text1);
-    background: var(--primary);
-  }
+body {
+  color: var(--text1);
+  background: var(--primary);
 }
+/* } */
