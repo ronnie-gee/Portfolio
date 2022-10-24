@@ -31,12 +31,12 @@ const NavBar = () => {
             sx={{
               flexGrow: 1,
               display: { xs: 'none', sm: 'block' },
-              paddingLeft: 5,
+              paddingLeft: 0,
               textAlign: 'left'
             }}
           >
             <Link href="/">
-              <MenuIcon/>
+            <img width='50' src = '/rLogo.png' alt="My Happy SVG"/>
             </Link>
           </Box>
           <Typography
