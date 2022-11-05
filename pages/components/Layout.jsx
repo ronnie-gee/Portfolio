@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
 import { styled, useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import { Switch, Box, Typography } from '@mui/material';
 import NavBar from './NavBar';
@@ -11,7 +12,7 @@ const darkTheme = createTheme({
       light: "#303030",
       contrastText: "#FFF",
     },
-    
+
   },
 });
 
@@ -123,6 +124,11 @@ const Layout = ({children}) => {
     <ThemeProvider theme={theme==='dark'? darkTheme:lightTheme}>
       <NavBar/>
       <Box component='div' sx={{minHeight: 64, backgroundColor:'transparent'}}></Box>
+      <Head>
+        <title>Ronnie Alfonso</title>
+        <meta name="Ronnie Alfonso Portfolio" content="My portfolio" />
+        <link rel="icon" href="/rLogo.png" />
+      </Head>
 
       {children}
 
