@@ -42,7 +42,9 @@ const NavBar = () => {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { lg: 'none', sm: 'none'} }}
+            sx={{ flexGrow: 1,
+              color: 'text.primary',
+              display: { lg: 'none', sm: 'none'} }}
           >
             I'm a Responsive NavBar
           </Typography>
@@ -70,7 +72,3 @@ const NavBar = () => {
 
 export default NavBar
 
-// <Box component="span">HOME</Box>
-//           <Box component="span">ABOUT</Box>
-//           <Box component="span">VIDEOS</Box>
-//           <Box component="span">CONTACT</Box>
