@@ -33,7 +33,6 @@ a {
 /* @media (prefers-color-scheme: light) { */
 html {
   color-scheme: light;
-  scroll-behavior: smooth;
 }
 body {
   color: var(--text1);
@@ -44,6 +43,7 @@ body {
 .container {
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 .container section {
