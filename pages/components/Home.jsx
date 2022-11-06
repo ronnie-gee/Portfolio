@@ -5,7 +5,8 @@ import Animatedletters from "./Animatedletters";
 const Home = () => {
   return (
     <Box
-      id="homepage"
+      component="section"
+      id="home"
       px={8}
       sx={{
         display: "flex",

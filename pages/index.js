@@ -4,12 +4,21 @@ import { Box, Typography } from "@mui/material";
 import AnimatedLetters from "./components/Animatedletters";
 import Animatedletters from "./components/Animatedletters";
 import Home from "./components/Home";
+import About from "./components/About";
 
 export default function Container() {
   return (
     <div>
-      <main className={styles.main}></main>
-      <Home></Home>
+      <Box
+        className="container"
+        sx={{
+          width: "100%",
+          height: "100vh",
+        }}
+      >
+        <Home />
+        <About />
+      </Box>
       <footer className={styles.footer}>
         <span className={styles.logo}></span>
       </footer>
