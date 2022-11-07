@@ -8,6 +8,7 @@ const Home = () => {
       component="section"
       id="home"
       px={8}
+      pt={12}
       sx={{
         display: "flex",
         alignItems: "center",

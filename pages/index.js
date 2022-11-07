@@ -5,6 +5,7 @@ import AnimatedLetters from "./components/Animatedletters";
 import Animatedletters from "./components/Animatedletters";
 import Home from "./components/Home";
 import About from "./components/About";
+import Contact from "./components/Contact";
 
 export default function Container() {
   return (
@@ -18,6 +19,7 @@ export default function Container() {
       >
         <Home />
         <About />
+        <Contact />
       </Box>
       <footer className={styles.footer}>
         <span className={styles.logo}></span>

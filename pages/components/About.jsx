@@ -7,6 +7,7 @@ const About = () => {
       component="section"
       id="about"
       px={8}
+      pt={12}
       sx={{
         display: "flex",
         alignItems: "center",
