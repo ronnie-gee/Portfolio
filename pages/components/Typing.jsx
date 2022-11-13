@@ -1,6 +1,6 @@
 //Created by Ronnie Alfonso
 
-import { Box, styled, Typography, useStepContext } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import React, { useEffect, useState, useRef } from "react";
 const FORWARD = "forward";
 const BACKWARD = "backward";
