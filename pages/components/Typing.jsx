@@ -1,6 +1,6 @@
 //Created by Ronnie Alfonso
 
-import { Box, styled, useStepContext } from "@mui/material";
+import { Box, styled, Typography, useStepContext } from "@mui/material";
 import React, { useEffect, useState, useRef } from "react";
 const FORWARD = "forward";
 const BACKWARD = "backward";
@@ -26,10 +26,12 @@ const Cursor = styled(Box)(({ theme }) => ({
   },
 }));
 
-const Typing = ({ wordList, speed = 200 }) => {
+const Typing = ({ wordList, speed = 200, styleObject }) => {
   const [typed, setTyped] = useState("");
+  const [isVowel, setIsVowel] = useState("");
   const charPosition = useRef(0);
   const wordPointer = useRef(0);
+  const vowels = "AEIOU";
 
   const direction = useRef(FORWARD);
 
@@ -39,11 +41,14 @@ const Typing = ({ wordList, speed = 200 }) => {
 
     if (wordPointer.current < wordList.length) {
       if (direction.current === FORWARD) {
+        setIsVowel(
+          vowels.search(currentWord[0].toUpperCase()) === -1 ? "" : "n"
+        );
         if (
           charPosition.current >= 0 &&
           charPosition.current < currentWordLength
         ) {
-          setTyped(currentWord.substring(0, charPosition.current + 1));
+          setTyped(`${currentWord.substring(0, charPosition.current + 1)}`);
           charPosition.current++;
         } else if (charPosition.current === currentWordLength) {
           charPosition.current++;
@@ -53,7 +58,7 @@ const Typing = ({ wordList, speed = 200 }) => {
         }
       } else if (direction.current === BACKWARD) {
         if (charPosition.current >= 0) {
-          setTyped(currentWord.substring(0, charPosition.current));
+          setTyped(`${currentWord.substring(0, charPosition.current)}`);
           charPosition.current--;
         } else if (charPosition.current === -1) {
           setTyped("");
@@ -78,10 +83,13 @@ const Typing = ({ wordList, speed = 200 }) => {
   }, [typed]);
 
   return (
-    <Box component="span" className="typing">
-      {typed}
-      <Cursor component="span">|</Cursor>
-    </Box>
+    <>
+      <Box component="span">a{isVowel} </Box>
+      <Box sx={styleObject} component="span">
+        {typed}
+        <Cursor component="span">|</Cursor>
+      </Box>
+    </>
   );
 };
 

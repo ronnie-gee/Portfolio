@@ -1,16 +1,13 @@
-import { ConstructionOutlined } from "@mui/icons-material";
 import {
   Box,
   Button,
   Grid,
-  Paper,
   TextField,
   Typography,
   Card,
   CardContent,
 } from "@mui/material";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -21,11 +18,7 @@ const Contact = () => {
 
   const isEmailValid = (email) => {
     const emailPattern = /(.+)@(.+){2,}\.(.+){2,}/;
-    if (emailPattern.test(email)) {
-      return true;
-    } else {
-      return false;
-    }
+    return emailPattern.test(email);
   };
 
   useEffect(() => {

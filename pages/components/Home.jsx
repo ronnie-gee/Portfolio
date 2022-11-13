@@ -25,15 +25,19 @@ const Home = () => {
         <Typography>Hi, I'm</Typography>
         <Animatedletters
           word="Ronnie Alfonso"
-          size={120}
+          size={80}
           weight={600}
           color={"grey.900"}
         ></Animatedletters>
         <Typography>
-          I'm a{" "}
+          I'm{" "}
           <Typing
-            wordList={["Web Developer", "Engineer", "Cute"]}
+            wordList={["Web Developer", "Engineer", "Cute Person"]}
             speed={150}
+            styleObject={{
+              color: "yellow",
+              fontSize: 40,
+            }}
           ></Typing>
         </Typography>
         <Typography>
