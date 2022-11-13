@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import {
-  styled,
-  useTheme,
-  ThemeProvider,
-  createTheme,
-} from "@mui/material/styles";
+import { styled, ThemeProvider, createTheme } from "@mui/material/styles";
 import { Switch, Box, Typography } from "@mui/material";
 import NavBar from "./NavBar";
 
@@ -27,6 +22,16 @@ const lightTheme = createTheme({
       main: "#FFF",
       light: "#FAFAFA",
       contrastText: "#303030",
+    },
+    primary: {
+      main: "#254A7B",
+      light: "rgb(80,10,149)",
+      dark: "rgb(25,51,86)",
+    },
+    accent: {
+      main: "#11A2E1",
+      light: "rgb(64,180,231)",
+      dark: "rgb(11,113,157)",
     },
   },
 });

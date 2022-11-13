@@ -1,11 +1,11 @@
 import { Box, styled } from "@mui/material";
 import React from "react";
 
-const RubberBox = styled(Box)(({ theme }) => ({
+const RubberBox = styled(Box)(({ hoverColor }) => ({
   userSelect: "none",
   display: "inline-block",
   "&:hover": {
-    color: "red",
+    color: hoverColor,
     animation: "rubberBand 1s infinite ease",
   },
   "@keyframes rubberBand": {
@@ -44,6 +44,7 @@ const Animatedletters = ({
   size,
   weight,
   color,
+  hoverColor = "rgb(64,180,231)",
 }) => {
   const wordArray = word.split("");
 
@@ -58,6 +59,7 @@ const Animatedletters = ({
             sx={{ fontSize: size, fontWeight: weight, color: color }}
             key={index}
             component="div"
+            hoverColor={hoverColor}
           >
             {char}
           </RubberBox>

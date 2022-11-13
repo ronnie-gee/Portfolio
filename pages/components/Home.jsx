@@ -27,7 +27,7 @@ const Home = () => {
           word="Ronnie Alfonso"
           size={80}
           weight={600}
-          color={"grey.900"}
+          color="background.contrastText"
         ></Animatedletters>
         <Typography>
           I'm{" "}
@@ -35,8 +35,9 @@ const Home = () => {
             wordList={["Web Developer", "Engineer", "Cute Person"]}
             speed={150}
             styleObject={{
-              color: "yellow",
+              color: "primary.main",
               fontSize: 40,
+              fontWeight: 600,
             }}
           ></Typing>
         </Typography>

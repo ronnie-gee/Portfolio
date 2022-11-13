@@ -2,7 +2,6 @@ import { Box } from "@mui/system";
 import { AppBar, Toolbar, IconButton, Button, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import React from "react";
-import styles from "../../styles/NavBar.module.css";
 import Link from "next/link";
 
 const navItems = ["Home", "About", "Projects", "Contact"];

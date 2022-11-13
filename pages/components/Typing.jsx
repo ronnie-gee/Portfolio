@@ -40,39 +40,41 @@ const Typing = ({ wordList, speed = 200, styleObject }) => {
     const currentWordLength = currentWord?.length;
 
     if (wordPointer.current < wordList.length) {
-      if (direction.current === FORWARD) {
-        setIsVowel(
-          vowels.search(currentWord[0].toUpperCase()) === -1 ? "" : "n"
-        );
-        if (
-          charPosition.current >= 0 &&
-          charPosition.current < currentWordLength
-        ) {
-          setTyped(`${currentWord.substring(0, charPosition.current + 1)}`);
-          charPosition.current++;
-        } else if (charPosition.current === currentWordLength) {
-          charPosition.current++;
-        } else if (charPosition.current > currentWordLength) {
-          charPosition.current--;
-          direction.current = BACKWARD;
-        }
-      } else if (direction.current === BACKWARD) {
-        if (charPosition.current >= 0) {
-          setTyped(`${currentWord.substring(0, charPosition.current)}`);
-          charPosition.current--;
-        } else if (charPosition.current === -1) {
-          setTyped("");
-
-          charPosition.current--;
-        } else {
-          wordPointer.current++;
-          charPosition.current = 0;
-          direction.current = FORWARD;
-        }
-      }
+      setTypedText(currentWord, currentWordLength);
     } else {
       wordPointer.current = 0;
       charPosition.current = 0;
+    }
+  };
+
+  const setTypedText = (currentWord, currentWordLength) => {
+    if (direction.current === FORWARD) {
+      setIsVowel(vowels.search(currentWord[0].toUpperCase()) === -1 ? "" : "n");
+      if (
+        charPosition.current >= 0 &&
+        charPosition.current < currentWordLength
+      ) {
+        setTyped(`${currentWord.substring(0, charPosition.current + 1)}`);
+        charPosition.current++;
+      } else if (charPosition.current === currentWordLength) {
+        charPosition.current++;
+      } else if (charPosition.current > currentWordLength) {
+        charPosition.current--;
+        direction.current = BACKWARD;
+      }
+    } else if (direction.current === BACKWARD) {
+      if (charPosition.current >= 0) {
+        setTyped(`${currentWord.substring(0, charPosition.current)}`);
+        charPosition.current--;
+      } else if (charPosition.current === -1) {
+        setTyped("");
+
+        charPosition.current--;
+      } else {
+        wordPointer.current++;
+        charPosition.current = 0;
+        direction.current = FORWARD;
+      }
     }
   };
 
