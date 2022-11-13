@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import Animatedletters from "./Animatedletters";
+import Typing from "./Typing";
 
 const Home = () => {
   return (
@@ -28,6 +29,13 @@ const Home = () => {
           weight={600}
           color={"grey.900"}
         ></Animatedletters>
+        <Typography>
+          I'm a{" "}
+          <Typing
+            wordList={["Web Developer", "Engineer", "Cute"]}
+            speed={150}
+          ></Typing>
+        </Typography>
         <Typography>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

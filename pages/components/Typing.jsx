@@ -1,26 +1,42 @@
 //Created by Ronnie Alfonso
 
-import React, { useEffect, useState } from "react";
-import { useRef } from "react";
+import { Box, styled, useStepContext } from "@mui/material";
+import React, { useEffect, useState, useRef } from "react";
 const FORWARD = "forward";
 const BACKWARD = "backward";
 
-const Typing = ({ wordList, speed, backSpeed }) => {
+const Cursor = styled(Box)(({ theme }) => ({
+  animation: "blink 1s infinite linear",
+  "@keyframes blink": {
+    from: {
+      opacity: 1,
+    },
+
+    "49%": {
+      opacity: 1,
+    },
+
+    "50%": {
+      opacity: 0,
+    },
+
+    to: {
+      opacity: 0,
+    },
+  },
+}));
+
+const Typing = ({ wordList, speed = 200 }) => {
   const [typed, setTyped] = useState("");
   const charPosition = useRef(0);
   const wordPointer = useRef(0);
+
   const direction = useRef(FORWARD);
 
-  console.log(
-    wordPointer.current,
-    charPosition.current,
-    wordList[wordPointer.current]
-  );
-
-  const currentWord = wordList[wordPointer.current];
-  const currentWordLength = currentWord.length;
-
   const getCurrent = () => {
+    const currentWord = wordList[wordPointer.current];
+    const currentWordLength = currentWord?.length;
+
     if (wordPointer.current < wordList.length) {
       if (direction.current === FORWARD) {
         if (
@@ -30,14 +46,20 @@ const Typing = ({ wordList, speed, backSpeed }) => {
           setTyped(currentWord.substring(0, charPosition.current + 1));
           charPosition.current++;
         } else if (charPosition.current === currentWordLength) {
+          charPosition.current++;
+        } else if (charPosition.current > currentWordLength) {
+          charPosition.current--;
           direction.current = BACKWARD;
         }
       } else if (direction.current === BACKWARD) {
         if (charPosition.current >= 0) {
           setTyped(currentWord.substring(0, charPosition.current));
           charPosition.current--;
+        } else if (charPosition.current === -1) {
+          setTyped("");
+
+          charPosition.current--;
         } else {
-          console.log("ELSE");
           wordPointer.current++;
           charPosition.current = 0;
           direction.current = FORWARD;
@@ -50,12 +72,17 @@ const Typing = ({ wordList, speed, backSpeed }) => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => getCurrent(), 150);
+    const interval = setInterval(() => getCurrent(), speed);
 
     return () => clearInterval(interval);
   }, [typed]);
 
-  return <div className="typing">{typed}</div>;
+  return (
+    <Box component="span" className="typing">
+      {typed}
+      <Cursor component="span">|</Cursor>
+    </Box>
+  );
 };
 
 export default Typing;
