@@ -1,11 +1,9 @@
-import { useEffect } from "react";
 import styles from "../styles/Home.module.css";
-import { Box, Typography } from "@mui/material";
-import AnimatedLetters from "./components/Animatedletters";
-import Animatedletters from "./components/Animatedletters";
+import { Box } from "@mui/material";
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import MaxWidth from "./components/MaxWidth";
 
 export default function Container() {
   return (
@@ -17,9 +15,17 @@ export default function Container() {
           height: "100vh",
         }}
       >
-        <Home />
-        <About />
-        <Contact />
+        <MaxWidth>
+          <Home />
+        </MaxWidth>
+
+        <MaxWidth>
+          <About />
+        </MaxWidth>
+
+        <MaxWidth>
+          <Contact />
+        </MaxWidth>
       </Box>
       <footer className={styles.footer}>
         <span className={styles.logo}></span>

@@ -56,9 +56,9 @@ const Typing = ({ wordList, speed = 200, styleObject }) => {
       ) {
         setTyped(`${currentWord.substring(0, charPosition.current + 1)}`);
         charPosition.current++;
-      } else if (charPosition.current === currentWordLength) {
+      } else if (charPosition.current - currentWordLength < 3) {
         charPosition.current++;
-      } else if (charPosition.current > currentWordLength) {
+      } else if (charPosition.current - currentWordLength === 3) {
         charPosition.current--;
         direction.current = BACKWARD;
       }
@@ -86,10 +86,14 @@ const Typing = ({ wordList, speed = 200, styleObject }) => {
 
   return (
     <>
-      <Box component="span">a{isVowel} </Box>
+      <Box component="span" sx={{ fontSize: styleObject.fontSize }}>
+        a{isVowel}{" "}
+      </Box>
       <Box sx={styleObject} component="span">
+        {"<"}
         {typed}
         <Cursor component="span">|</Cursor>
+        {"/>"}
       </Box>
     </>
   );

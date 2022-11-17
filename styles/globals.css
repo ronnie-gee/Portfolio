@@ -42,12 +42,12 @@ body {
 
 .container {
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  /* scroll-snap-type: y mandatory; */
   scroll-behavior: smooth;
 }
 
-.container section {
+/* .container section {
   scroll-snap-align: center;
-}
+} */
 
 /* } */

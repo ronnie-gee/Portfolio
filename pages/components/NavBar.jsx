@@ -32,7 +32,7 @@ const NavBar = () => {
             textAlign: "left",
           }}
         >
-          <Link href="/">
+          <Link href="#home">
             <img width="50" src="/rLogo.png" alt="My Happy SVG" />
           </Link>
         </Box>
